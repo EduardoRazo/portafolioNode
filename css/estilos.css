@@ -1,0 +1,516 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,300&display=swap');
+
+/* 1ro declarar las varibales, 
+Dentro de la seudoclase llamada "root" tienes mas especificidad */
+
+:root{
+    /* Variables */
+    --background: linear-gradient(135deg, #062ddb98 0%, #22fd227e 100% ); /* Agregar un gradiente, los 2 ultimos carcteres indican el color alfa */
+    --color-primary: #0769b9; /* #0769b9  azul_bajo*/  /* #0729c098 azul_fuerte */   
+    --color-secondary: #062ddb; /* #22fd227e verde */
+    --color-tercero:#22fd22;
+    --botom-padding: 20px 40px; /* 20 up/down 40 lft/rgt */
+}
+
+body{
+    font-family: 'Raleway', sans-serif;
+}
+
+.container{
+    width: 90%;
+    margin: 0 auto; /* centrado: 0 up/dwn, auto lft/rgt  */
+    overflow: hidden; /* todo lo que sale del cointainer se oculte */
+    padding: 80px 0;
+    max-width: 1200px;
+}
+
+.subtitle {
+    color: var(--color-primary);
+    font-size: 2.5rem;
+    margin-bottom: 35px;
+}
+
+.hero{
+    height: 100vh;/* el 100 del alto del viewport */
+    background-image: var(--background), url('../assets/hero1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover; /* abaracar el 100% del contenedor */
+    background-attachment: fixed; /* fingir el efecto paralax */
+    background-position: center; 
+    position: relative; /* para posicionar la "wave" */
+}
+
+/* los container que esten dentro de hero */
+.hero .container{
+    padding: 0;
+}
+
+.nav{
+    display:flex;
+    justify-content: flex-end; /* Todos los elementos se vallana al fondo */
+    height: 70px;
+    align-items:center;
+    font-weight: 700;
+}
+
+.nav--footer{
+    font-weight: 300;
+    justify-content: flex-start;
+}
+
+.nav__items{
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+    padding: 10px 15px;
+    font-weight: inherit; /* hereda el weight del padre */
+}
+
+.nav__items--cta{
+    border: 1px solid #fff;
+}
+
+.nav__items--footer{
+    padding: 10px; /* a todos lados */
+}
+
+.hero__container{
+    display: flex;
+    height: calc(100vh - 70px);
+    align-items: center; /* centrar los textos verticalmente */  
+    color: #fff;
+}
+
+.hero__texts{
+    width: 80%;
+    margin-bottom: 50px;
+}
+
+.hero__title{
+    font-size: 3.2rem;
+}
+
+.hero__subtitle{
+    font-size: 2rem;
+    font-weight: 300;
+    margin: 15px 0; /* 15 up/dwn, 0 rgt/lft */
+}
+
+.hero__cta{
+    display: inline-block; /* Desbloquear propiedades del box model*/
+    background: #fff;
+    padding: var(--botom-padding);
+    color: var(--color-primary);
+    text-decoration: none;
+    border-radius: 40px;
+
+}
+
+.hero__wave{
+    position: absolute; /* Para que se posicione absolutamente a su padre */
+    bottom: 0; /* posiciona al inferior */
+    left: 0;  /* posiciona al izquierda */
+    width: 100%;
+   height: 100px;
+} 
+
+/* about */
+.presentation{
+    padding-top: 0; /* debido a q tenemos 100 del wave */
+    text-align: center; /* todos los elementos se centran */
+}
+
+.presentation__picture{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    object-fit: cover; /* evitar distorsion y resololucion */
+    object-position: center; /* posicion */
+}
+
+.presentation__copy{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.presentation__cta{
+    display: inline-block; /* los "a" son elementos en linea */
+    margin-top: 30px;
+    background: var(--color-primary);
+    color: #fff;
+    text-decoration: none;
+    padding: var(--botom-padding);
+    border-radius: 40px;
+}
+
+.about{
+    min-height: 400px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* definimos 2 columnas de una fraccion */
+    row-gap: 80px; /* espaciado entre filas */
+    justify-items: center; /* centrado vertical */
+    align-items: center;/* centrado vertical */
+}
+
+.about__img{
+    text-align: center;
+}
+
+.about__img--left{
+    text-align: left;
+}
+
+.about__picture{
+    max-width: 80%; /* no supere el 80 del container */
+}
+
+.about__paragraph{
+    margin-bottom: 20px;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+/* Projects */
+
+.projects{
+    background: #f2f2f2;
+    
+}
+
+.projects__grid{
+    display: grid; /* indicamos que trabajaremos con grid */
+    height: 550px;/* alto */
+    grid-template-areas: 
+    "img1 img1 img2 img3"
+    "img1 img1 img4 img5";/* declarar columnas y filas del grid */
+    gap: 10px;
+}
+
+.projects__item{
+    position: relative; /* para poder poner el efecto */
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /*  ocultar todo lo que salga de ete contenedor */
+}
+
+.projects__img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;/* para que se ajuste al elemento */ 
+    cursor: pointer; /* curdor tipo manita */    
+}
+
+/* apoyados de una seudoclase identificarlos elementos del grid como el tipo grid area */
+.projects__item:nth-of-type(1){
+    grid-area: img1;
+}
+
+.projects__item:nth-of-type(2){
+    grid-area: img2;
+}
+
+.projects__item:nth-of-type(3){
+    grid-area: img3;
+}
+
+.projects__item:nth-of-type(4){
+    grid-area: img4;
+}
+
+.projects__item:nth-of-type(5){
+    grid-area: img5;
+}
+
+.projects__hover{
+    position: absolute; /* para que se posiciones absolutamente en su padre */
+    background: #336ff18c; /* #336ff18c */
+    top: 0;
+    left: 0;
+    cursor:pointer;
+    /* expandir */
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    /* alinear */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* efecto */
+    transform:translateX(100%);/* mover en x este elemeto */
+    transition: transform .3s ease-in-out; /* efecto solo a la propiedad transform */
+}
+/* 59:55 */
+
+/* con seudoclase Hover afectando la clase "projects__hover" */
+.projects__item:hover .projects__hover{
+    transform:translateX(0%)
+}
+
+.projects__icon{
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+/* Testimony */
+
+.testimony__grid{
+    width: 100%; /* para que ocupe toda la grilla */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.testimony__item{
+    width: 95%;
+    margin: 0 auto;
+    background: var(--color-primary);
+    box-shadow: 0 8px 10px rgba(66,66,66, .5);
+    border-radius: 7px;
+    padding: 30px 25px;
+    color: #fff;
+    margin-bottom: 50px;
+}
+
+.testimony__person{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.testimony__img{
+    /* foto cuadrada */
+    width: 100px;
+    min-width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    margin-right: 30px;
+}
+
+.testimony__name{
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.testimony__verification{
+    color: #92e2ec; /* #5cdbec */
+    font-weight: 700; /* Bold */
+}
+
+.testimony__review{
+    font-weight: 300; /* light */
+}
+
+/* Footer */
+.footer{
+    background: var(--color-primary);
+}
+
+.footer__grid{
+    display: grid;
+    grid-template-columns: 3fr 2fr; /* Division del grid */
+    gap: 20px;
+    align-items: center;/* centrar verticalmente */
+}
+
+.footer__title{
+    font-weight: 400;
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;/* centrar texto*/
+}
+
+.footer__icons{
+    display: flex;
+    justify-content: space-evenly /* distribuir equitativamente */
+}
+
+.footer__container-icons{
+    display: inline-block;/* los span son elementos en lineas, se aplica inline blocks, para poder usar width */
+    width: 60px;
+    height: 60px;
+    color: #fff;
+    text-align: center;
+    border: 1px solid #fff;
+    border-radius: 50%;
+}
+
+.footer__icon{
+    color: inherit;
+    font-size: 30px;
+    text-decoration: none;
+    
+}
+/* la separamos de la clase pasada x q se necesita ser mas especifico  */
+.fab.footer__icon{
+    line-height: 60px; /* centrado vertical de iconos */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 800px){
+    .root:{
+        --botom-padding: 18px 40px; /* 18 up/down 40 lft/rgt */
+    }
+    .nav{
+        justify-content: space-around;
+    }
+
+    .nav__items--cta{
+        border: none;
+    }
+
+    .nav__items{
+        font-weight: 400;
+        border-bottom: 1px solid #fff;
+        margin-right: 0;
+    }
+   
+    .nav__items--footer{
+        border: none;
+    }
+
+    .hero__texts{
+        width: 100%;
+        margin-bottom: 80px;
+    }
+
+    .hero__title{
+        font-size: 2.5rem;
+    }
+
+    .hero__subtitle{
+        font-size: 1.5rem;
+    }
+
+    /* About */
+    .presentation__copy{
+        width: 100%;
+    }
+    .about{
+        grid-template-columns: 1fr;
+    }
+    
+/* 1:17:43 */
+    .about.container{
+        padding-top: 30px;
+    }
+
+    .about__img--left{
+        text-align: center;
+    }
+    /* acomodod e imagen reemplazar este bloque del 3 al 4*/
+    .about__texts:last-child{
+        grid-row: 3/4;
+    }
+
+    /* My projects */
+    
+
+    .projects__grid{
+        grid-template-areas: 
+        "img1 img1 img2 img2"
+        "img1 img1 img3 img3"
+        "img4 img4 img5 img5"; /* declarar columnas y filas del grid */
+    }
+
+    /* Testimony */
+    .testimony__grid{
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    /* Footer */
+    .footer__grid{
+        grid-template-columns: 1fr;
+    }
+
+    .footer__contact{
+        grid-row: 1/2;
+    }
+
+
+}
+
+@media screen and (max-width: 500px){
+    .root:{
+        --boton-padding: 18px 35px;  
+    }
+    .subtitle{
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    .nav{
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        margin-top: 10px;
+    }
+
+    .nav__items{
+        padding: 0 10px;
+        border: 0;
+    }
+
+    .hero__texts{
+        text-align: center;
+        margin-bottom: 100px;
+    }
+
+    .hero__title{
+        font-size: 2rem;
+    }
+
+    /* About */
+
+    .presentation__picture{
+        width: 120px;
+        height: 120px;
+    }
+
+    .about{
+        row-gap: 60px;
+    }
+
+    .about.container{
+        padding-top: 10px;
+    }
+
+    /* My projects */
+    .projects__grid{
+        grid-template-areas: 
+        "img1"
+        "img2"
+        "img3"
+        "img4"
+        "img5";
+        height: auto;
+        grid-template-rows: repeat(5, 250px);
+        grid-auto-rows: 250px;
+        gap:10px;
+    }
+
+    /* testimony */
+
+    .testimony__item{
+        padding: 30px 15px;
+    }   
+
+    .testimony__person{
+        flex-direction: column;
+    }
+
+    .testimony__texts{
+        text-align: center;
+    }
+
+    .testimony__img{
+        margin: 0;
+        margin-bottom: 20px;
+
+    }
+}
+
